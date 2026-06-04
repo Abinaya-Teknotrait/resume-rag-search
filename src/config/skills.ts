@@ -1,0 +1,18 @@
+export const DEFAULT_SKILLS: string[] = [
+  'Java',
+  'Selenium',
+  'Playwright',
+  'API Testing',
+  'Postman',
+  'SQL',
+  'MongoDB',
+  'Jenkins',
+  'React',
+  'Node.js',
+  'JavaScript',
+  'TypeScript',
+  'Python',
+  'Figma',
+  'UX Design',
+  'UI Design',
+];

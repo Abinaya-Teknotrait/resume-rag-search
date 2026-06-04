@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=${MONGO_URI}
+      - MONGO_DB_NAME=${MONGO_DB_NAME}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+
+  frontend:
+    image: node:18-alpine
+    working_dir: /app/recruitbot-web
+    volumes:
+      - ./recruitbot-web:/app/recruitbot-web
+    command: sh -c "cd /app/recruitbot-web && npm ci && npm run build && npx serve -s dist -l 4173"
+    ports:
+      - '4173:4173'
+    environment:
+      - VITE_API_BASE_URL=http://backend:3000
+    depends_on:
+      - backend
