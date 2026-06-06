@@ -1,27 +1,27 @@
-import * as dns from 'dns';
+// import * as dns from 'dns';
 import { MongoClient, Db } from 'mongodb';
 import { config } from './index';
 import { getLogger } from '../services/LoggingService';
 
 const logger = getLogger();
 
-const DNS_SERVERS = ['40.53.1.11', '192.168.1.1'];
+// const DNS_SERVERS = ['40.53.1.11', '192.168.1.1'];
 
-function configureDnsServers(): void {
-  try {
-    dns.setServers(DNS_SERVERS);
-    logger.info('Configured Node DNS servers for MongoDB resolution', {
-      servers: DNS_SERVERS,
-    });
-  } catch (error) {
-    logger.warn('Failed to configure Node DNS servers', {
-      error: error instanceof Error ? error.message : String(error),
-      servers: DNS_SERVERS,
-    });
-  }
-}
+// function configureDnsServers(): void {
+//   try {
+//     dns.setServers(DNS_SERVERS);
+//     logger.info('Configured Node DNS servers for MongoDB resolution', {
+//       servers: DNS_SERVERS,
+//     });
+//   } catch (error) {
+//     logger.warn('Failed to configure Node DNS servers', {
+//       error: error instanceof Error ? error.message : String(error),
+//       servers: DNS_SERVERS,
+//     });
+//   }
+// }
 
-configureDnsServers();
+// configureDnsServers();
 
 /**
  * MongoDB client with connection pooling
